@@ -4,6 +4,7 @@ class Album < ApplicationRecord
   validates_length_of :name, maximum: 100
   has_many :album_artists
   has_many :artists, :through => :album_artists
+  scope :rock, -> { where(genre: "Rock") }
   before_save(:titleize_album)
 
   private
